@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanket Raut - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <nav>
+      <h1 class="logo">Sanket Raut</h1>
+      <span class="menu-toggle">&#9776;</span> <!-- Hamburger -->
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <img src="DSC_5720.JPG" alt="Profile" class="profile-img">
+    <h2>Hello, I'm <span>Sanket Raut</span></h2>
+    <p>Aspiring Full-Stack Developer | AWS Certified | Java | Python | SQL | DevOps</p>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p style="text-align: center;">
+      I'm a Computer Engineering graduate from AISSMS Institute of Information Technology, Pune (2024).
+      I am AWS Certified Cloud Practitioner and have strong knowledge of Python, Java, SQL, AWS Cloud,
+      Web Technologies (HTML, CSS, JavaScript), and DevOps Tools.
+    </p>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="skills">
+    <h2>Technical Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-card"><h3>Python</h3></div>
+      <div class="skill-card"><h3>Java</h3></div>
+      <div class="skill-card"><h3>MySQL / SQL</h3></div>
+      <div class="skill-card"><h3>AWS Cloud</h3></div>
+      <div class="skill-card"><h3>DevOps (Terraform, Git, CI/CD)</h3></div>
+      <div class="skill-card"><h3>Machine Learning & AI</h3></div>
+      <div class="skill-card"><h3>Web Development (HTML, CSS, JS)</h3></div>
+      <div class="skill-card"><h3>Data Analytics (Power BI, Tableau)</h3></div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Safe Route - AI & IoT Fire Evacuation</h3>
+        <p>Developed AI + IoT based fire evacuation system for smart buildings. Website hosted on Netlify.</p>
+      </div>
+      <div class="project-card">
+        <h3>Parkinson’s Disease Detection</h3>
+        <p>Machine Learning web app using CNN, Jitter, Shimmer and Gait Dataset for early detection.</p>
+      </div>
+      <div class="project-card">
+        <h3>AWS Cloud Infrastructure Deployment</h3>
+        <p>Deployed multi-tier web application on AWS using EC2, S3, RDS with Terraform and Auto Scaling.</p>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>Responsive personal portfolio using HTML, CSS showcasing skills and projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section id="certifications" class="certifications">
+    <h2>Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card"><h3>AWS Certified Cloud Practitioner</h3><p>Amazon Web Services certification validating cloud fundamentals.</p></div>
+      <div class="cert-card"><h3>Cloud Application Developer</h3><p>NASSCOM certification on developing and deploying cloud apps.</p></div>
+      <div class="cert-card"><h3>Hands-on Python Programming</h3><p>ZeroOneBits Technology certification in applied Python.</p></div>
+      <div class="cert-card"><h3>Data Associate</h3><p>Symbiosis Skills & Professional University certification in Data Analytics.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Sanket Raut. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== JS for Hamburger ===== -->
+  <script>
+    document.querySelector(".menu-toggle").addEventListener("click", function() {
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
