@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Session 5 - CSS Transitions & Responsive Images</title>
+  <link rel="stylesheet" href="src/css/components.css">
+</head>
+<body>
+  <h1>Session 5 </h1>
+
+  <!-- Button with hover/focus -->
+  <button class="button">Hover Me</button>
+
+  <!-- Card with transform -->
+  <div class="card">
+    <h2>Card Title</h2>
+    <p>This is a card with hover effect.</p>
+  </div>
+
+<img 
+  src="Day5\Session5\Image\1000250379.jpg" 
+  srcset="
+    Day5\Session5\Image\1000250379.jpg 480w,
+    Day5\Session5\Image\1000250379.jpg 800w,
+    Day5\Session5\Image\1000250379.jpg 1200w
+  "
+  sizes="(max-width: 600px) 480px,
+         (max-width: 1024px) 800px,
+         1200px"
+  alt="Curved road through lush green forest with cloudy sky">
+

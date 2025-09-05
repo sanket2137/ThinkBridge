@@ -1,0 +1,42 @@
+/* Button styles */
+.button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+/* Card styles */
+.card {
+  width: 250px;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* Image styling */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
