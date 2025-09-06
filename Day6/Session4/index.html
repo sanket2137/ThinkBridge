@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Dev Keyword Reference</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col items-center p-4 sm:p-8">
+
+  <!-- Header Section -->
+  <header class="text-center mb-8 w-full max-w-4xl">
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight">
+      Web Dev Keyword Reference
+    </h1>
+    <p class="mt-2 text-lg text-gray-600">
+      Explore and learn essential keywords for HTML, CSS, and JavaScript.
+    </p>
+    <div class="mt-6">
+      <input type="text" id="searchInput" placeholder="Search for a keyword..." 
+        class="w-full max-w-lg p-3 rounded-full border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="w-full max-w-5xl">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <section class="bg-white p-6 rounded-2xl shadow-lg">
+        <h2 class="section-title border-blue-500">HTML Keywords</h2>
+        <div id="htmlList" class="scroll-container space-y-4"></div>
+      </section>
+
+      <section class="bg-white p-6 rounded-2xl shadow-lg">
+        <h2 class="section-title border-green-500">CSS Keywords</h2>
+        <div id="cssList" class="scroll-container space-y-4"></div>
+      </section>
+
+      <section class="bg-white p-6 rounded-2xl shadow-lg">
+        <h2 class="section-title border-yellow-500">JavaScript Keywords</h2>
+        <div id="jsList" class="scroll-container space-y-4"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    const keywords = {
+      html: [
+        { name: 'div', description: 'Defines a generic container for content.' },
+        { name: 'p', description: 'Defines a paragraph.' },
+        { name: 'h1', description: 'Defines the most important heading.' },
+        { name: 'a', description: 'Defines a hyperlink.' },
+        { name: 'img', description: 'Embeds an image in the document.' },
+        { name: 'ul', description: 'Defines an unordered list.' },
+        { name: 'li', description: 'Defines a list item.' },
+        { name: 'button', description: 'Defines a clickable button.' },
+      ],
+      css: [
+        { name: 'color', description: 'Sets the text color.' },
+        { name: 'background-color', description: 'Sets background color.' },
+        { name: 'font-family', description: 'Specifies the font.' },
+        { name: 'margin', description: 'Sets margin (outside spacing).' },
+        { name: 'padding', description: 'Sets padding (inside spacing).' },
+        { name: 'border', description: 'Sets border style, width, and color.' },
+        { name: 'width', description: 'Specifies the width of an element.' },
+        { name: 'height', description: 'Specifies the height of an element.' },
+        { name: 'display', description: 'Specifies how an element is displayed (block, inline, flex, etc.).' },
+        { name: 'position', description: 'Specifies positioning (static, relative, absolute, fixed, sticky).' },
+        { name: 'flex', description: 'A shorthand for flex-grow, flex-shrink, and flex-basis.' },
+        { name: 'grid-template-columns', description: 'Defines column structure in CSS Grid.' },
+        { name: 'justify-content', description: 'Aligns items along the main axis in flex/grid.' },
+        { name: 'align-items', description: 'Aligns items along the cross axis in flex/grid.' },
+        { name: 'z-index', description: 'Specifies stack order of elements.' },
+      ],
+      js: [
+        { name: 'const', description: 'Declares a block-scoped constant.' },
+        { name: 'let', description: 'Declares a block-scoped variable.' },
+        { name: 'function', description: 'Defines a function.' },
+        { name: 'if...else', description: 'Conditional statement.' },
+        { name: 'for', description: 'Loop statement.' },
+        { name: 'while', description: 'Loop that continues while a condition is true.' },
+        { name: 'switch', description: 'Conditional branching with multiple cases.' },
+        { name: 'return', description: 'Exits a function and returns a value.' },
+        { name: 'try...catch', description: 'Handles exceptions (errors).'},
+        { name: 'class', description: 'Defines a class for creating objects.' },
+        { name: 'this', description: 'Refers to the current object context.' },
+        { name: 'new', description: 'Creates an instance of an object/class.' },
+        { name: 'import', description: 'Imports functions, objects, or files in modules.' },
+        { name: 'export', description: 'Exports functions, objects, or files for reuse.' },
+        { name: 'await', description: 'Waits for a Promise to resolve (inside async functions).' },
+        { name: 'async', description: 'Declares a function as asynchronous.' },
+      ]
+    };
+
+    const htmlList = document.getElementById('htmlList');
+    const cssList = document.getElementById('cssList');
+    const jsList = document.getElementById('jsList');
+    const searchInput = document.getElementById('searchInput');
+
+    function renderKeywords(filter = '') {
+      const lowerFilter = filter.toLowerCase();
+
+      function createKeywordItem(item) {
+        return `
+          <div class="keyword-item bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm hover:bg-white transition-all duration-200">
+            <h3 class="font-semibold text-lg text-gray-800">${item.name}</h3>
+            <p class="mt-1 text-sm text-gray-600">${item.description}</p>
+          </div>
+        `;
+      }
+
+      htmlList.innerHTML = keywords.html
+        .filter(item => item.name.toLowerCase().includes(lowerFilter) || item.description.toLowerCase().includes(lowerFilter))
+        .map(createKeywordItem)
+        .join('');
+
+      cssList.innerHTML = keywords.css
+        .filter(item => item.name.toLowerCase().includes(lowerFilter) || item.description.toLowerCase().includes(lowerFilter))
+        .map(createKeywordItem)
+        .join('');
+
+      jsList.innerHTML = keywords.js
+        .filter(item => item.name.toLowerCase().includes(lowerFilter) || item.description.toLowerCase().includes(lowerFilter))
+        .map(createKeywordItem)
+        .join('');
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      renderKeywords(e.target.value);
+    });
+
+    // Initial render
+    renderKeywords();
+  </script>
+</body>
+</html>
