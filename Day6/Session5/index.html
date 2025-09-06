@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Keyword Reference</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col items-center p-4 sm:p-8">
+
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow-lg hover:bg-gray-700 transition">🌙 Dark Mode</button>
+
+    <!-- Header Section -->
+    <header class="text-center mb-8 w-full max-w-4xl">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight">
+            Web Dev Keyword Reference
+        </h1>
+        <p class="mt-2 text-lg text-gray-600">
+            Explore and learn essential keywords for HTML, CSS, and JavaScript.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="mt-6">
+            <input type="text" id="searchInput" placeholder="Search for a keyword..." class="w-full max-w-lg p-3 rounded-full border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex justify-center gap-3 mt-4">
+            <button onclick="filterCategory('html')" class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition">HTML</button>
+            <button onclick="filterCategory('css')" class="px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition">CSS</button>
+            <button onclick="filterCategory('js')" class="px-4 py-2 bg-yellow-400 text-black rounded-full hover:bg-yellow-300 transition">JS</button>
+            <button onclick="filterCategory('all')" class="px-4 py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition">All</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="w-full max-w-5xl">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <section class="bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform">
+                <h2 class="text-2xl font-bold text-gray-800 border-b-4 border-blue-500 pb-3 mb-4">HTML Keywords</h2>
+                <div id="htmlList" class="scroll-container space-y-4"></div>
+            </section>
+
+            <section class="bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform">
+                <h2 class="text-2xl font-bold text-gray-800 border-b-4 border-green-500 pb-3 mb-4">CSS Keywords</h2>
+                <div id="cssList" class="scroll-container space-y-4"></div>
+            </section>
+
+            <section class="bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform">
+                <h2 class="text-2xl font-bold text-gray-800 border-b-4 border-yellow-500 pb-3 mb-4">JavaScript Keywords</h2>
+                <div id="jsList" class="scroll-container space-y-4"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="hidden absolute bg-gray-900 text-white p-2 rounded shadow-lg text-sm z-50"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
