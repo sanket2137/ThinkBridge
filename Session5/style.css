@@ -1,75 +1,141 @@
-:root {
-  --bg: #eef2ff;
-  --card: #ffffff;
-  --muted: #6b7280;
+/* DevKey Cheat Sheet Styles */
+
+/* Base styles */
+.card { 
+  background-color: white; 
 }
 
-body {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
-  background: var(--bg);
-  color: #111827;
+.dark .card { 
+  background-color: #dedede; 
 }
 
-body.dark {
-  background: #0f172a;
-  color: #e6eef8;
+.dark { 
+  background-color: #d7d8dc; 
+  color: #f9fafb; 
 }
 
-body.dark .card {
-  background: #0b1220;
-  border-color: #1f2937;
+/* Dark mode form styles */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #f3f3f3 !important;
+  border-color: #dfe3e8 !important;
+  color: #f9fafb;
 }
 
-.card {
-  background: var(--card);
-  border: 1px solid rgba(15, 23, 42, 0.06);
+/* Filter button active state */
+.filter-active { 
+  opacity: 0.8; 
+  transform: scale(0.95); 
 }
 
-.keyword-item {
-  perspective: 1000px;
-  transition: all .25s ease;
+/* JavaScript controlled hiding */
+.hidden-by-js { 
+  display: none; 
 }
 
+/* Scrollbar styles */
+.scroll-container::-webkit-scrollbar { 
+  width: 6px; 
+}
+
+.scroll-container::-webkit-scrollbar-track { 
+  background: #f1f1f1; 
+}
+
+.scroll-container::-webkit-scrollbar-thumb { 
+  background: #888; 
+  border-radius: 3px; 
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover { 
+  background: #555; 
+}
+
+/* Code block styles */
+pre { 
+  background: #f8f9fa; 
+  padding: 8px; 
+  border-radius: 4px; 
+  font-family: 'Courier New', monospace; 
+}
+
+.dark pre { 
+  background: #374151; 
+}
+
+/* Tooltip styles */
+.tooltip.show { 
+  opacity: 1; 
+}
+
+/* Button hover effects */
+.edit-btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.copy-btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Keyword item hover effect */
 .keyword-item:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.2s ease;
 }
 
-#tooltip {
-  pointer-events: none;
-  transition: opacity .18s ease, transform .18s ease;
-  opacity: 0;
-  transform: translateY(4px) scale(.985);
+/* Focus states for accessibility */
+.keyword-item:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }
 
-#tooltip.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* Form focus states */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }
 
-pre {
-  background: rgba(0, 0, 0, 0.03);
-  padding: 0.6rem;
-  border-radius: .5rem;
-  overflow: auto;
+/* Success message animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.filter-active {
-  outline: 3px solid rgba(59, 130, 246, 0.15);
-  transform: scale(1.03);
+.message-slide-in {
+  animation: slideIn 0.3s ease-out;
 }
 
-.hidden-by-js {
-  display: none;
-}
-
-/* Responsive tweaks */
-@media (max-width: 640px) {
-  header .filters {
-    position: sticky;
-    top: 0;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    backdrop-filter: blur(4px);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  
+  .copy-btn {
+    font-size: 10px;
+    padding: 4px 8px;
   }
 }
