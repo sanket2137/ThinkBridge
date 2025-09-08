@@ -1,63 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Dev Keyword Reference</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevKey — Web Dev Cheat Sheet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="flex flex-col items-center p-4 sm:p-8">
+<body class="p-4 sm:p-8">
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg hover:bg-gray-700 transition">🌙</button>
 
-    <!-- Dark Mode Toggle -->
-    <button id="darkModeToggle" class="fixed top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow-lg hover:bg-gray-700 transition">🌙 Dark Mode</button>
+  <header class="max-w-4xl mx-auto text-center mb-6">
+    <h1 class="text-3xl sm:text-4xl font-extrabold">DevKey — Web Dev Cheat Sheet</h1>
+    <p class="mt-2 text-sm text-gray-600">Quick reference for common HTML, CSS, and JavaScript keywords — searchable, filterable, and expandable.</p>
 
-    <!-- Header Section -->
-    <header class="text-center mb-8 w-full max-w-4xl">
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight">
-            Web Dev Keyword Reference
-        </h1>
-        <p class="mt-2 text-lg text-gray-600">
-            Explore and learn essential keywords for HTML, CSS, and JavaScript.
-        </p>
+    <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <input id="searchInput" type="text" placeholder="Search keywords or descriptions — press '/' to focus" class="w-full sm:w-96 p-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <div class="filters flex gap-2" role="tablist" aria-label="Filter by category">
+        <button data-cat="all" class="px-4 py-2 bg-gray-500 text-white rounded-full">All</button>
+        <button data-cat="html" class="px-4 py-2 bg-blue-500 text-white rounded-full">HTML</button>
+        <button data-cat="css" class="px-4 py-2 bg-green-500 text-white rounded-full">CSS</button>
+        <button data-cat="js" class="px-4 py-2 bg-yellow-400 text-black rounded-full">JS</button>
+      </div>
+    </div>
+  </header>
 
-        <!-- Search Bar -->
-        <div class="mt-6">
-            <input type="text" id="searchInput" placeholder="Search for a keyword..." class="w-full max-w-lg p-3 rounded-full border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
-        </div>
+  <!-- Add Keyword Form -->
+  <div class="mt-6 max-w-2xl mx-auto bg-white dark:bg-rgb(255 255 255);
+-800 p-4 rounded-2xl shadow">
+    <h3 class="text-lg font-bold mb-3">➕ Add New Keyword</h3>
+    <form id="addKeywordForm" class="grid gap-3 sm:grid-cols-2">
+      <input type="text" id="keywordName" placeholder="Keyword name (e.g. flexbox)" required
+        class="p-2 rounded border border-gray-300 dark:border-gray-600 dark:bg-rgb(255 255 255);
+-700" />
+      <select id="keywordCategory" required
+        class="p-2 rounded border border-gray-300 dark:border-gray-600 dark:bg-rgb(255 255 255);
+-700">
+        <option value="">Select category</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="js">JavaScript</option>
+      </select>
+      <input type="text" id="keywordDescription" placeholder="Short description" required
+        class="p-2 rounded border border-gray-300 dark:border-gray-600 dark:bg-rgb(255 255 255);
+-700 sm:col-span-2" />
+      <textarea id="keywordExample" placeholder="Example code" rows="2" required
+        class="p-2 rounded border border-gray-300 dark:border-gray-600 dark:bg-rgb(255 255 255);
+-700 sm:col-span-2"></textarea>
+      <button type="submit"
+        class="bg-blue-600 text-white py-2 px-4 rounded-full shadow hover:bg-blue-700 sm:col-span-2">Add Keyword</button>
+    </form>
+  </div>
 
-        <!-- Filter Buttons -->
-        <div class="flex justify-center gap-3 mt-4">
-            <button onclick="filterCategory('html')" class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition">HTML</button>
-            <button onclick="filterCategory('css')" class="px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition">CSS</button>
-            <button onclick="filterCategory('js')" class="px-4 py-2 bg-yellow-400 text-black rounded-full hover:bg-yellow-300 transition">JS</button>
-            <button onclick="filterCategory('all')" class="px-4 py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition">All</button>
-        </div>
-    </header>
+  <main class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <section class="card p-6 rounded-2xl shadow-lg">
+        <h2 class="text-xl font-bold border-b-4 border-blue-500 pb-3 mb-4">HTML</h2>
+        <div id="htmlList" class="space-y-4 scroll-container max-h-[65vh] overflow-y-auto"></div>
+      </section>
 
-    <!-- Main Content Area -->
-    <main class="w-full max-w-5xl">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <section class="bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform">
-                <h2 class="text-2xl font-bold text-gray-800 border-b-4 border-blue-500 pb-3 mb-4">HTML Keywords</h2>
-                <div id="htmlList" class="scroll-container space-y-4"></div>
-            </section>
+      <section class="card p-6 rounded-2xl shadow-lg">
+        <h2 class="text-xl font-bold border-b-4 border-green-500 pb-3 mb-4">CSS</h2>
+        <div id="cssList" class="space-y-4 scroll-container max-h-[65vh] overflow-y-auto"></div>
+      </section>
 
-            <section class="bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform">
-                <h2 class="text-2xl font-bold text-gray-800 border-b-4 border-green-500 pb-3 mb-4">CSS Keywords</h2>
-                <div id="cssList" class="scroll-container space-y-4"></div>
-            </section>
+      <section class="card p-6 rounded-2xl shadow-lg">
+        <h2 class="text-xl font-bold border-b-4 border-yellow-500 pb-3 mb-4">JavaScript</h2>
+        <div id="jsList" class="space-y-4 scroll-container max-h-[65vh] overflow-y-auto"></div>
+      </section>
+    </div>
+  </main>
 
-            <section class="bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform">
-                <h2 class="text-2xl font-bold text-gray-800 border-b-4 border-yellow-500 pb-3 mb-4">JavaScript Keywords</h2>
-                <div id="jsList" class="scroll-container space-y-4"></div>
-            </section>
-        </div>
-    </main>
+  <div id="tooltip" class="hidden absolute bg-gray-900 text-white p-2 rounded shadow-lg text-sm z-50"></div>
 
-    <!-- Tooltip -->
-    <div id="tooltip" class="hidden absolute bg-gray-900 text-white p-2 rounded shadow-lg text-sm z-50"></div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
